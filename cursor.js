@@ -663,7 +663,7 @@ class ProjectView {
     const elements = this.getProjectElements();
     this.saveOriginalState(elements);
 
-    this.updateLargeImage(elements.largeImgContainer, 'assets/images/abc.mp4', 'ABC zine main');
+      const videoContainer = this.createVideoContainer('assets/images/abcm.mp4', 'abcmain');
     this.updateSmallImages(elements.leftColumn, [
       { src: 'assets/images/abc_1.jpg', alt: 'ABC zine detail 1' },
       { src: 'assets/images/abc_2.jpg', alt: 'ABC zine detail 2' }
