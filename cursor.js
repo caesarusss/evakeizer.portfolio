@@ -415,55 +415,53 @@ class ProjectView {
 
     this.projectTexts = {
       'someone baked this': `
-    <strong>Someone baked this</strong> — a brand about one person's handmade work, attention to detail, and the materialization of personal stories through sweets.
+    the brand about one person's handmade work, attention to detail, and the materialization of personal stories through sweets.
   `,
 
       'mindplug': `
     <a href="https://caesarusss.github.io/poster_code/">website link</a>
     <br><br>
-    Mindplug is a radio platform playing various types of sounds. It helps people with fear of silence and insomnia. The website reveals the product's visual identity.
+    mindplug is a radio platform playing various types of sounds. it helps people with fear of silence and insomnia. the website reveals the product's visual identity.
   `,
 
       'music zine': `
-    <strong>Music zine</strong> — an experimental zine exploring music and visual culture.
+    an experimental zine exploring music and visual culture. was made in 2 hours
   `,
 
       'korean calendar': `
-    <strong>A calendar for Korean laboring folks</strong> — a calendar for Korean workers with a focus on weekends and public holidays. The set includes a sticker pack for unexpected days off.
+    a calendar for korean workers with a focus on weekends and public holidays. the set includes a sticker pack for unexpected days off.
     <br><br>
-    An ode to unconventional color combinations and distorted typography inspired by the Asian visual context.
+    an ode to unconventional color combinations and distorted typography inspired by the asian visual context.
   `,
 
       'terracotta': `
     <a href="https://www.figma.com/proto/RIplRLIAGAqrtVNZv0URjJ/terracotta">prototype link</a>
     <br><br>
-    A website for a cozy pottery studio.
+    a website for a cozy pottery studio.
   `,
 
       'abc zine': `
-    <strong>ABC zine</strong> — a visual experiment exploring typography, letters, and graphic expression.
-    <br><br>
-    WORK IN PROGRESS
+    this zine is a visual experiment exploring typography, letters, and graphic expression.
   `,
 
       'air payment app': `
-    <strong>Air payment app</strong> — a project that helped me pass the competitive selection among 150 candidates and receive an internship at one of the leading design studios in Russia.
+    a project that helped me pass the competitive selection among 150 candidates and receive an internship at one of the leading design studios in russia.
   `,
 
       'plantae': `
-    <strong>Plantae</strong> — the identity of a tea workshop and cultural space that hosts musical evenings, lectures, and master classes.
+    the identity of a tea workshop and cultural space that hosts musical evenings, lectures, and master classes.
     <br><br>
     WORK IN PROGRESS
   `,
 
       'vintage': `
-    A guide app for the vintage community. Users can discover important news and facts, make deals, register for auctions, and track their progress in exploring vintage culture.
+    a guide app for the vintage community. users can discover important news and facts, make deals, register for auctions, and track their progress in exploring vintage culture.
   `,
 
       'card game': `
-    <strong>Card game</strong> — the goal was to create a card game clearly structured around questions, with the main idea of encouraging meaningful conversations rather than endless question-answer sessions.
+    the goal was to create a card game clearly structured around questions, with the main idea of encouraging meaningful conversations rather than endless question-answer sessions.
     <br><br>
-    A bright game for bright people & about bright people.
+    a bright game for bright people & about bright people.
   `
     };
 
