@@ -415,53 +415,55 @@ class ProjectView {
 
     this.projectTexts = {
       'someone baked this': `
-    the brand about one person's handmade work, attention to detail, and the materialization of personal stories through sweets.
+    <strong>Someone baked this</strong> — a brand about one person's handmade work, attention to detail, and the materialization of personal stories through sweets.
   `,
 
       'mindplug': `
     <a href="https://caesarusss.github.io/poster_code/">website link</a>
     <br><br>
-    mindplug is a radio platform playing various types of sounds. it helps people with fear of silence and insomnia. the website reveals the product's visual identity.
+    Mindplug is a radio platform playing various types of sounds. It helps people with fear of silence and insomnia. The website reveals the product's visual identity.
   `,
 
       'music zine': `
-    an experimental zine exploring music and visual culture. was made in 2 hours
+    <strong>Music zine</strong> — an experimental zine exploring music and visual culture.
   `,
 
       'korean calendar': `
-    a calendar for korean workers with a focus on weekends and public holidays. the set includes a sticker pack for unexpected days off.
+    <strong>A calendar for Korean laboring folks</strong> — a calendar for Korean workers with a focus on weekends and public holidays. The set includes a sticker pack for unexpected days off.
     <br><br>
-    an ode to unconventional color combinations and distorted typography inspired by the asian visual context.
+    An ode to unconventional color combinations and distorted typography inspired by the Asian visual context.
   `,
 
       'terracotta': `
     <a href="https://www.figma.com/proto/RIplRLIAGAqrtVNZv0URjJ/terracotta">prototype link</a>
     <br><br>
-    a website for a cozy pottery studio.
+    A website for a cozy pottery studio.
   `,
 
       'abc zine': `
-    this zine is a visual experiment exploring typography, letters, and graphic expression.
+    <strong>ABC zine</strong> — a visual experiment exploring typography, letters, and graphic expression.
+    <br><br>
+    WORK IN PROGRESS
   `,
 
       'air payment app': `
-    a project that helped me pass the competitive selection among 150 candidates and receive an internship at one of the leading design studios in russia.
+    <strong>Air payment app</strong> — a project that helped me pass the competitive selection among 150 candidates and receive an internship at one of the leading design studios in Russia.
   `,
 
       'plantae': `
-    the identity of a tea workshop and cultural space that hosts musical evenings, lectures, and master classes.
+    <strong>Plantae</strong> — the identity of a tea workshop and cultural space that hosts musical evenings, lectures, and master classes.
     <br><br>
     WORK IN PROGRESS
   `,
 
       'vintage': `
-    a guide app for the vintage community. users can discover important news and facts, make deals, register for auctions, and track their progress in exploring vintage culture.
+    A guide app for the vintage community. Users can discover important news and facts, make deals, register for auctions, and track their progress in exploring vintage culture.
   `,
 
       'card game': `
-    the goal was to create a card game clearly structured around questions, with the main idea of encouraging meaningful conversations rather than endless question-answer sessions.
+    <strong>Card game</strong> — the goal was to create a card game clearly structured around questions, with the main idea of encouraging meaningful conversations rather than endless question-answer sessions.
     <br><br>
-    a bright game for bright people & about bright people.
+    A bright game for bright people & about bright people.
   `
     };
 
@@ -661,13 +663,14 @@ class ProjectView {
     const elements = this.getProjectElements();
     this.saveOriginalState(elements);
 
-      const videoContainer = this.createVideoContainer('assets/images/abcm.mp4', 'abcmain');
+    this.updateLargeImage(elements.largeImgContainer, 'assets/images/abc_3.jpg', 'ABC zine main photo');
+
     this.updateSmallImages(elements.leftColumn, [
       { src: 'assets/images/abc_1.jpg', alt: 'ABC zine detail 1' },
       { src: 'assets/images/abc_2.jpg', alt: 'ABC zine detail 2' }
     ]);
 
-    if (elements.morePhotos) elements.morePhotos.style.display = 'none';
+    this.updateMorePhotosText(elements.morePhotos, '2 more photos');
   }
 
   setupAirPaymentProject() {
@@ -1118,6 +1121,10 @@ class SimpleGallery {
     document.querySelectorAll('.project-small-img img').forEach(img => {
       this.images.push(img.src);
     });
+
+    for (let i = 4; i <= 5; i++) {
+      this.images.push(`assets/images/abc_${i}.jpg`);
+    }
 
     console.log('Total ABC zine images:', this.images.length);
   }
