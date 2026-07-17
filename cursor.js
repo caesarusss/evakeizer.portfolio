@@ -554,7 +554,7 @@ class ProjectView {
       { src: 'assets/images/sbt_3.jpg', alt: 'Someone baked this detail 2' }
     ]);
 
-    this.updateMorePhotosText(elements.morePhotos, '10 more photos');
+    this.updateMorePhotosText(elements.morePhotos, '9 more photos');
   }
 
   setupMindplugProject() {
