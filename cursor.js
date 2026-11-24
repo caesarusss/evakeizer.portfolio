@@ -27,6 +27,7 @@ class SmoothCursor {
     this.lastFrameTime = 0;
     this.autoScrollDelay = 1000;
 
+    window.smoothCursorInstance = this;
     this.init();
   }
 
@@ -91,7 +92,7 @@ class SmoothCursor {
   setupSmoothScroll() {
     this.scrollPos = this.content.scrollTop;
     this.targetScrollPos = this.content.scrollTop;
-    this.maxScroll = this.content.scrollHeight - this.content.clientHeight;
+    this.maxScroll = Math.max(0, this.content.scrollHeight - this.content.clientHeight);
 
     let isDragging = false;
     let startY = 0;
@@ -238,7 +239,7 @@ class SmoothCursor {
       this.pos.y = window.innerHeight - 10;
     }
 
-    this.maxScroll = this.content.scrollHeight - this.content.clientHeight;
+    this.maxScroll = Math.max(0, this.content.scrollHeight - this.content.clientHeight);
   }
 
   animate(currentTime = performance.now()) {
@@ -565,7 +566,7 @@ class ProjectView {
       { src: 'assets/images/sbt_3.jpg', alt: 'Someone baked this detail 2' }
     ]);
 
-    this.updateMorePhotosText(elements.morePhotos, '8 more photos');
+    this.updateMorePhotosText(elements.morePhotos, '9 more photos');
   }
 
   setupMindplugProject() {
@@ -863,7 +864,7 @@ class ProjectView {
     video.muted = true;
     video.autoplay = true;
     video.playsInline = true;
-    video.currentTime = 0;
+    video.setAttribute('aria-label', alt);
 
     videoContainer.appendChild(video);
     return videoContainer;
@@ -1091,6 +1092,9 @@ class SimpleGallery {
       case 'air-payment':
         this.collectAirPaymentImages();
         break;
+      case 'pho-bo':
+        this.collectPhoBoImages();
+        break;
       case 'plantae':
         this.collectPlantaeImages();
         break;
@@ -1113,12 +1117,13 @@ class SimpleGallery {
     if (projectContent.classList.contains('someone-baked-project')) return 'someone-baked';
     if (projectContent.classList.contains('abc-zine-project')) return 'abc-zine';
     if (projectContent.classList.contains('air-payment-project')) return 'air-payment';
+    if (projectContent.classList.contains('pho-bo-project')) return 'pho-bo';
     if (projectContent.classList.contains('plantae-project')) return 'plantae';
     if (projectContent.classList.contains('card-game-project')) return 'card-game';
 
     const disabledProjects = [
       'mindplug-project', 'terracotta-project', 'vintage-project',
-      'artlebedev-project', 'pho-bo-project'
+      'artlebedev-project'
     ];
 
     for (const project of disabledProjects) {
@@ -1159,6 +1164,18 @@ class SimpleGallery {
   }
 
   collectSomeoneBakedImages() {
+    // Keep the gallery to 12 distinct, existing assets. The previous range
+    // repeated sbt_3.jpg and referenced the missing sbt_12.jpg.
+    this.images = Array.from({ length: 11 }, (_, index) =>
+      `assets/images/sbt_${index + 1}.jpg`
+    );
+    this.images.push('assets/images/sbt.jpg');
+    this.images = [...new Set(this.images)].slice(0, 12);
+
+    console.log('Total Someone baked this images:', this.images.length);
+  }
+
+  collectPhoBoImages() {
     const mainImg = document.querySelector('.project-large-img img');
     if (mainImg) this.images.push(mainImg.src);
 
@@ -1166,11 +1183,8 @@ class SimpleGallery {
       this.images.push(img.src);
     });
 
-    for (let i = 3; i <= 12; i++) {
-      this.images.push(`assets/images/sbt_${i}.jpg`);
-    }
-
-    console.log('Total Someone baked this images:', this.images.length);
+    this.images = [...new Set(this.images)];
+    console.log('Total Pho Bo images:', this.images.length);
   }
 
   collectAbcZineImages() {
