@@ -1659,3 +1659,16 @@ body {
     aspect-ratio: 236 / 163;
   }
 }
+
+
+/* Global hyperlink style */
+a, a:visited {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #000;
+  text-underline-offset: 3px;
+}
+
+a:hover, a:active {
+  color: #000;
+}

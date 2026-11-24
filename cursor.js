@@ -408,6 +408,7 @@ class ProjectView {
       'someone baked this': this.setupSomeoneBakedProject.bind(this),
       'abc zine': this.setupAbcZineProject.bind(this),
       'air payment app': this.setupAirPaymentProject.bind(this),
+      'pho bo': this.setupPhoBoProject.bind(this),
       'plantae': this.setupPlantaeProject.bind(this),
       'card game': this.setupCardGameProject.bind(this),
       'art lebedev studio': this.setupArtLebedevProject.bind(this),
@@ -448,6 +449,10 @@ class ProjectView {
 
       'air payment app': `
     <strong>Air payment app</strong> — a project that helped me pass the competitive selection among 150 candidates and receive an internship at one of the leading design studios in Russia.
+  `,
+
+      'pho bo': `
+    Created social and advertising visuals, print layouts and presentations; retouched images, worked with 3D graphics, and conducted design and SMM reviews.
   `,
 
       'plantae': `
@@ -525,7 +530,7 @@ class ProjectView {
   closeProject() {
     const specialClasses = [
       'mindplug-project', 'music-zine-project', 'calendar-project', 'terracotta-project', 'vintage-project',
-      'someone-baked-project', 'abc-zine-project', 'air-payment-project', 'plantae-project', 'card-game-project', 'artlebedev-project'
+      'someone-baked-project', 'abc-zine-project', 'air-payment-project', 'pho-bo-project', 'plantae-project', 'card-game-project', 'artlebedev-project'
     ];
 
     specialClasses.forEach(className => {
@@ -694,6 +699,21 @@ class ProjectView {
     this.updateMorePhotosText(elements.morePhotos, '2 more photos');
   }
 
+  setupPhoBoProject() {
+    this.projectContent.classList.add('pho-bo-project');
+
+    const elements = this.getProjectElements();
+    this.saveOriginalState(elements);
+
+    this.updateLargeImage(elements.largeImgContainer, 'assets/images/phobo1.gif', 'Pho Bo main visual');
+    this.updateSmallImages(elements.leftColumn, [
+      { src: 'assets/images/phobo2.jpg', alt: 'Pho Bo detail 1' },
+      { src: 'assets/images/phobo3.jpg', alt: 'Pho Bo detail 2' }
+    ]);
+
+    this.updateMorePhotosText(elements.morePhotos, '2 more photos');
+  }
+
   setupPlantaeProject() {
     this.projectContent.classList.add('plantae-project');
 
@@ -768,7 +788,7 @@ class ProjectView {
   setupRegularProject() {
     const specialClasses = [
       'someone-baked-project', 'mindplug-project', 'music-zine-project', 'calendar-project',
-      'terracotta-project', 'abc-zine-project', 'air-payment-project', 'plantae-project',
+      'terracotta-project', 'abc-zine-project', 'air-payment-project', 'pho-bo-project', 'plantae-project',
       'vintage-project', 'card-game-project', 'artlebedev-project'
     ];
     this.projectContent.classList.remove(...specialClasses);
@@ -942,7 +962,7 @@ class ProjectView {
 
     const skipImageUpdate = [
       'mindplug', 'korean calendar', 'terracotta', 'vintage',
-      'someone baked this', 'abc zine', 'air payment app', 'plantae', 'card game', 'art lebedev studio'
+      'someone baked this', 'abc zine', 'air payment app', 'pho bo', 'plantae', 'card game', 'art lebedev studio'
     ];
 
     if (!skipImageUpdate.includes(title)) {
@@ -1067,6 +1087,9 @@ class SimpleGallery {
       case 'air-payment':
         this.collectAirPaymentImages();
         break;
+      case 'pho-bo':
+        this.collectPhoBoImages();
+        break;
       case 'plantae':
         this.collectPlantaeImages();
         break;
@@ -1089,6 +1112,7 @@ class SimpleGallery {
     if (projectContent.classList.contains('someone-baked-project')) return 'someone-baked';
     if (projectContent.classList.contains('abc-zine-project')) return 'abc-zine';
     if (projectContent.classList.contains('air-payment-project')) return 'air-payment';
+    if (projectContent.classList.contains('pho-bo-project')) return 'pho-bo';
     if (projectContent.classList.contains('plantae-project')) return 'plantae';
     if (projectContent.classList.contains('card-game-project')) return 'card-game';
 
@@ -1176,6 +1200,15 @@ class SimpleGallery {
     }
 
     console.log('Total Air payment app images:', this.images.length);
+  }
+
+  collectPhoBoImages() {
+    const mainImg = document.querySelector('.project-large-img img');
+    if (mainImg) this.images.push(mainImg.src);
+
+    document.querySelectorAll('.project-small-img img').forEach(img => {
+      this.images.push(img.src);
+    });
   }
 
   collectPlantaeImages() {
