@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,15 +12,16 @@
   <div class="container">
     <div class="sidebar">
       <img src="assets/images/logo.svg" alt="лого">
-      <p class="subtitle">graphic designer in moscow</p>
+      <p class="subtitle" data-i18n="subtitle">graphic designer in moscow</p>
+      <div class="language-switch"><button type="button" class="language-button" data-lang="ru">ru</button><span>/</span><button type="button" class="language-button active" data-lang="en">en</button></div>
     </div>
 
     <div class="contacts">
       <p class="contact">
-        <span class="label">telegram:</span> <span class="value"><a href="https://t.me/ev_kei">@ev_kei</a></span>
+        <span class="label" data-i18n="telegram">telegram:</span> <span class="value"><a href="https://t.me/ev_kei">@ev_kei</a></span>
       </p>
       <p class="contact">
-        <span class="label">mail:</span> <span class="value">evakeizer0@gmail.com</span>
+        <span class="label" data-i18n="mail">mail:</span> <span class="value">evakeizer0@gmail.com</span>
       </p>
 
       <div class="project-content">
@@ -60,109 +61,30 @@
     </div>    
   
     <div class="content">
-  <div class="cards">
-
-    <!-- Первый ряд -->
-
-    <div class="card">
-      <img src="assets/images/sbt.jpg" alt="someone baked this">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">someone baked this</span>
+    <section class="project-section commerce-section">
+      <h2 class="section-heading" data-i18n="commerce">commerce</h2>
+      <div class="cards">
+        <div class="card"><img src="assets/images/sbt.jpg" alt="someone baked this"><div class="card-title"><span class="dot"></span><span class="text">someone baked this</span></div></div>
+        <div class="card empty-card" aria-label="Empty project"></div><div class="card empty-card" aria-label="Empty project"></div><div class="card empty-card" aria-label="Empty project"></div>
       </div>
-    </div>
-
-
-    <div class="card">
-      <img src="assets/images/mindplug.jpg" alt="mindplug">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">mindplug</span>
+    </section>
+    <section class="project-section non-commerce-section">
+      <h2 class="section-heading" data-i18n="nonCommerce">non-commerce</h2>
+      <div class="cards">
+        <div class="card"><img src="assets/images/mindplug.jpg" alt="mindplug"><div class="card-title"><span class="dot"></span><span class="text">mindplug</span></div></div>
+        <div class="card"><img src="assets/images/calendar.png" alt="calendar"><div class="card-title"><span class="dot"></span><span class="text">korean calendar</span></div></div>
+        <div class="card"><img src="assets/images/terracotta.png" alt="terracotta"><div class="card-title"><span class="dot"></span><span class="text">terracotta</span></div></div>
+        <div class="card"><img src="assets/images/abc.jpg" alt="abc zine"><div class="card-title"><span class="dot"></span><span class="text">abc zine</span></div></div>
+        <div class="card"><img src="assets/images/app.jpg" alt="air payment app"><div class="card-title"><span class="dot"></span><span class="text">air payment app</span></div></div>
+        <div class="card"><img src="assets/images/plantae.jpg" alt="plantae"><div class="card-title"><span class="dot"></span><span class="text">plantae</span></div></div>
+        <div class="card"><img src="assets/images/vintage.png" alt="vintage"><div class="card-title"><span class="dot"></span><span class="text">vintage</span></div></div>
+        <div class="card"><img src="assets/images/game.png" alt="card game"><div class="card-title"><span class="dot"></span><span class="text">card game</span></div></div>
       </div>
-    </div>
-
-
-    <div class="card">
-      <img src="assets/images/zine.jpg" alt="music zine">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">music zine</span>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <img src="assets/images/calendar.png" alt="calendar">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">korean calendar</span>
-      </div>
-    </div>
-
-
-
-    <!-- Второй ряд -->
-
-
-    <div class="card">
-      <img src="assets/images/terracotta.png" alt="terracotta">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">terracotta</span>
-      </div>
-    </div>
-
-        <div class="card">
-      <img src="assets/images/abc.jpg" alt="abc zine">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">abc zine</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/images/app.jpg" alt="air payment app">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">air payment app</span>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <img src="assets/images/plantae.jpg" alt="plantae">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">plantae</span>
-      </div>
-    </div>
-
-
-
-    <!-- Третий ряд -->
-
-        <div class="card">
-      <img src="assets/images/vintage.png" alt="vintage">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">vintage</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/images/game.png" alt="card game">
-      <div class="card-title">
-        <span class="dot"></span>
-        <span class="text">card game</span>
-      </div>
-    </div>
-
-
-  </div>
-</div> 
+    </section>
+  </div> 
 
     <div class="text-block">
-      <p>ex-designer at Art Lebedev Studio with 3 years of experience. studied at the Design Department of the HSE and completed a course at the Perasperadastra design agency. i am proficient in Figma, Ps, Ai, Ae, Id, Blender, Tilda and VSCode (HTML/CSS/JS).
+      <p data-i18n="bio">ex-designer at Art Lebedev Studio with 3 years of experience. studied at the Design Department of the HSE and completed a course at the Perasperadastra design agency. i am proficient in Figma, Ps, Ai, Ae, Id, Blender, Tilda and VSCode (HTML/CSS/JS).
 
         <br>experience in product design:
         
@@ -192,6 +114,7 @@
 
 <!-- В конце body, перед закрывающим тегом -->
 <script src="project.js"></script>
+<script src="language.js"></script>
 
   <div class="custom-cursor"></div>
   <script src="cursor.js"></script>

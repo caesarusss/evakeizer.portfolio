@@ -402,7 +402,6 @@ class ProjectView {
 
     this.specialProjects = {
       'mindplug': this.setupMindplugProject.bind(this),
-      'music zine': this.setupMusicZineProject.bind(this),
       'korean calendar': this.setupCalendarProject.bind(this),
       'terracotta': this.setupTerracottaProject.bind(this),
       'vintage': this.setupVintageProject.bind(this),
@@ -907,7 +906,7 @@ class ProjectView {
     }
 
     const skipImageUpdate = [
-      'mindplug', 'music zine', 'korean calendar', 'terracotta', 'vintage',
+      'mindplug', 'korean calendar', 'terracotta', 'vintage',
       'someone baked this', 'abc zine', 'air payment app', 'plantae', 'card game'
     ];
 
