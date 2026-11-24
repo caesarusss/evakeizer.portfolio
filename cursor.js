@@ -711,7 +711,7 @@ class ProjectView {
       { src: 'assets/images/phobo3.jpg', alt: 'Pho Bo detail 2' }
     ]);
 
-    this.updateMorePhotosText(elements.morePhotos, '2 more photos');
+    if (elements.morePhotos) elements.morePhotos.style.display = 'none';
   }
 
   setupPlantaeProject() {
@@ -770,14 +770,20 @@ class ProjectView {
     this.saveOriginalState(elements);
 
     const image = document.createElement('img');
-    image.src = 'assets/images/artlebedev1.jpg';
     image.alt = 'Art Lebedev Studio — Fokus';
+    image.decoding = 'async';
+    image.loading = 'eager';
+    image.draggable = false;
+    image.addEventListener('error', () => {
+      image.classList.add('image-load-error');
+    }, { once: true });
 
     elements.leftColumn.innerHTML = '';
     elements.leftColumn.style.gridColumn = '1 / span 3';
     elements.leftColumn.style.width = '977px';
     elements.leftColumn.style.height = '595px';
     elements.leftColumn.appendChild(image);
+    image.src = 'assets/images/artlebedev1.jpg';
 
     elements.largeImgContainer.style.display = 'none';
     if (elements.morePhotos) elements.morePhotos.style.display = 'none';
@@ -1060,8 +1066,6 @@ class SimpleGallery {
         this.close();
       }
     });
-
-    this.disableGalleryForSpecialProjects();
   }
 
   collectImages() {
@@ -1087,9 +1091,6 @@ class SimpleGallery {
       case 'air-payment':
         this.collectAirPaymentImages();
         break;
-      case 'pho-bo':
-        this.collectPhoBoImages();
-        break;
       case 'plantae':
         this.collectPlantaeImages();
         break;
@@ -1112,12 +1113,12 @@ class SimpleGallery {
     if (projectContent.classList.contains('someone-baked-project')) return 'someone-baked';
     if (projectContent.classList.contains('abc-zine-project')) return 'abc-zine';
     if (projectContent.classList.contains('air-payment-project')) return 'air-payment';
-    if (projectContent.classList.contains('pho-bo-project')) return 'pho-bo';
     if (projectContent.classList.contains('plantae-project')) return 'plantae';
     if (projectContent.classList.contains('card-game-project')) return 'card-game';
 
     const disabledProjects = [
-      'mindplug-project', 'terracotta-project', 'vintage-project', 'artlebedev-project'
+      'mindplug-project', 'terracotta-project', 'vintage-project',
+      'artlebedev-project', 'pho-bo-project'
     ];
 
     for (const project of disabledProjects) {
@@ -1200,15 +1201,6 @@ class SimpleGallery {
     }
 
     console.log('Total Air payment app images:', this.images.length);
-  }
-
-  collectPhoBoImages() {
-    const mainImg = document.querySelector('.project-large-img img');
-    if (mainImg) this.images.push(mainImg.src);
-
-    document.querySelectorAll('.project-small-img img').forEach(img => {
-      this.images.push(img.src);
-    });
   }
 
   collectPlantaeImages() {
@@ -1295,6 +1287,15 @@ class SimpleGallery {
   }
 
   setupOpenTriggers() {
+    const projectContent = document.querySelector('.project-content');
+    if (this.getProjectType(projectContent) === 'disabled') {
+      const staticElements = projectContent.querySelectorAll(
+        '.project-large-img, .project-small-img, .more-photos, .project-left-column img'
+      );
+      staticElements.forEach((el) => { el.style.cursor = 'default'; });
+      return;
+    }
+
     this.setupLargeImageTrigger();
     this.setupSmallImagesTriggers();
     this.setupMorePhotosTrigger();
@@ -1428,46 +1429,7 @@ class SimpleGallery {
     });
   }
 
-  disableGalleryForSpecialProjects() {
-    const checkForSpecialProjects = () => {
-      const projectContent = document.querySelector('.project-content');
-      const disabledProjects = [
-        'mindplug-project', 'terracotta-project', 'vintage-project', 'artlebedev-project'
-      ];
 
-      const isDisabled = disabledProjects.some(project => 
-        projectContent && projectContent.classList.contains(project)
-      );
-
-      if (isDisabled) {
-        this.disableTriggers();
-      }
-    };
-
-    setInterval(checkForSpecialProjects, 500);
-  }
-
-  disableTriggers() {
-    const elements = [
-      { selector: '.project-large-img', cursor: 'default' },
-      { selector: '.project-small-img', cursor: 'default', isMultiple: true },
-      { selector: '.more-photos', cursor: 'default' }
-    ];
-
-    elements.forEach(({ selector, cursor, isMultiple }) => {
-      const els = isMultiple 
-        ? document.querySelectorAll(selector)
-        : [document.querySelector(selector)];
-
-      els.forEach(el => {
-        if (el) {
-          el.style.cursor = cursor;
-          const newEl = el.cloneNode(true);
-          el.parentNode.replaceChild(newEl, el);
-        }
-      });
-    });
-  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

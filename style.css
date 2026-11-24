@@ -1672,3 +1672,15 @@ a, a:visited {
 a:hover, a:active {
   color: #000;
 }
+
+
+/* Pho Bo: static layout with one GIF and two detail images; no gallery link. */
+.project-content.pho-bo-project .more-photos {
+  display: none !important;
+}
+
+.project-content.pho-bo-project .project-large-img,
+.project-content.pho-bo-project .project-small-img,
+.project-content.pho-bo-project .project-left-column img {
+  cursor: default !important;
+}
