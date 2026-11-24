@@ -690,7 +690,8 @@ body {
 }
 
 /* Стили для проекта Terracotta - структура как у mindplug */
-.project-content.terracotta-project .project-left-column {
+.project-content.terracotta-project .project-left-column,
+.project-content.artlebedev-project .project-left-column {
   grid-column: 1 / span 3 !important;
   width: 977px !important;
   height: 595px !important;
@@ -699,12 +700,14 @@ body {
 }
 
 /* Добавляем отступ для terracotta текстового блока */
-.project-content.terracotta-project .project-bottom-container {
+.project-content.terracotta-project .project-bottom-container,
+.project-content.artlebedev-project .project-bottom-container {
   margin-top: 32px;
 }
 
 .project-content.terracotta-project .project-left-column video,
-.project-content.terracotta-project .project-left-column img {
+.project-content.terracotta-project .project-left-column img,
+.project-content.artlebedev-project .project-left-column img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -713,39 +716,47 @@ body {
 
 /* Скрываем элементы для terracotta */
 .project-content.terracotta-project .project-large-img,
-.project-content.terracotta-project .more-photos {
+.project-content.terracotta-project .more-photos,
+.project-content.artlebedev-project .project-large-img,
+.project-content.artlebedev-project .more-photos {
   display: none !important;
 }
 
 /* Адаптивность для Terracotta */
 @media (max-width: 1379px) {
-  .project-content.terracotta-project .project-left-column {
+  .project-content.terracotta-project .project-left-column,
+  .project-content.artlebedev-project .project-left-column {
     width: 842px !important;
     height: 490px !important;
   }
-  .project-content.terracotta-project .project-bottom-container {
+  .project-content.terracotta-project .project-bottom-container,
+  .project-content.artlebedev-project .project-bottom-container {
     margin-top: 32px;
   }
 }
 
 @media (max-width: 1023px) {
-  .project-content.terracotta-project .project-left-column {
+  .project-content.terracotta-project .project-left-column,
+  .project-content.artlebedev-project .project-left-column {
     width: 692px !important;
     height: 408px !important;
   }
-  .project-content.terracotta-project .project-bottom-container {
+  .project-content.terracotta-project .project-bottom-container,
+  .project-content.artlebedev-project .project-bottom-container {
     margin-top: 24px;
   }
 }
 
 @media (max-width: 767px) {
-  .project-content.terracotta-project .project-left-column {
+  .project-content.terracotta-project .project-left-column,
+  .project-content.artlebedev-project .project-left-column {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 977 / 595;
     grid-column: 1 !important;
   }
-  .project-content.terracotta-project .project-bottom-container {
+  .project-content.terracotta-project .project-bottom-container,
+  .project-content.artlebedev-project .project-bottom-container {
     margin-top: 16px;
   }
 }
@@ -1647,62 +1658,4 @@ body {
     height: auto;
     aspect-ratio: 236 / 163;
   }
-}
-
-
-/* Art Lebedev Studio project cover; local image can be dropped into assets/images/artlebedev.jpg. */
-.artlebedev-cover {
-  position: relative;
-  width: 236px;
-  aspect-ratio: 236 / 163;
-  overflow: hidden;
-  background: #d9d9d9;
-}
-
-.card-title {
-  margin-top: 4px;
-}
-
-.artlebedev-cover img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.artlebedev-cover.image-missing::after {
-  content: "art lebedev studio";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  font: 400 18px/23px "Helvetica Neue", sans-serif;
-  letter-spacing: -0.04em;
-  text-transform: lowercase;
-}
-
-.project-small-img.image-missing,
-.project-large-img.image-missing {
-  background: #d9d9d9;
-}
-
-.project-small-img.image-missing::after,
-.project-large-img.image-missing::after {
-  content: "art lebedev studio";
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  font: 400 18px/23px "Helvetica Neue", sans-serif;
-  letter-spacing: -0.04em;
-  text-transform: lowercase;
-}
-
-@media (max-width: 1100px) {
-  .artlebedev-cover { width: 100%; }
 }

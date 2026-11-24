@@ -748,21 +748,21 @@ class ProjectView {
 
     const elements = this.getProjectElements();
     this.saveOriginalState(elements);
-    this.limitSmallImages(elements.leftColumn, 1);
-    this.updateSmallImages(elements.leftColumn, [
-      { src: 'assets/images/artlebedev.jpg', alt: 'Art Lebedev Studio — Fokus cover' }
-    ]);
-    this.updateLargeImage(elements.largeImgContainer, 'assets/images/artlebedev1.jpg', 'Fokus presentation templates');
+
+    const image = document.createElement('img');
+    image.src = 'assets/images/artlebedev1.jpg';
+    image.alt = 'Art Lebedev Studio — Fokus';
+
+    elements.leftColumn.innerHTML = '';
+    elements.leftColumn.style.gridColumn = '1 / span 3';
+    elements.leftColumn.style.width = '977px';
+    elements.leftColumn.style.height = '595px';
+    elements.leftColumn.appendChild(image);
+
+    elements.largeImgContainer.style.display = 'none';
     if (elements.morePhotos) elements.morePhotos.style.display = 'none';
 
-    const smallImage = elements.leftColumn.querySelector('.project-small-img');
-    const smallImg = smallImage?.querySelector('img');
-    if (smallImage && smallImg) {
-      smallImg.onerror = () => {
-        smallImg.style.display = 'none';
-        smallImage.classList.add('image-missing');
-      };
-    }
+    this.adaptForMobile(elements.leftColumn, 'artlebedev');
   }
 
   setupRegularProject() {
