@@ -410,6 +410,7 @@ class ProjectView {
       'air payment app': this.setupAirPaymentProject.bind(this),
       'plantae': this.setupPlantaeProject.bind(this),
       'card game': this.setupCardGameProject.bind(this),
+      'art lebedev studio': this.setupArtLebedevProject.bind(this),
     };
 
     this.projectTexts = {
@@ -463,6 +464,12 @@ class ProjectView {
     <strong>Card game</strong> — the goal was to create a card game clearly structured around questions, with the main idea of encouraging meaningful conversations rather than endless question-answer sessions.
     <br><br>
     A bright game for bright people & about bright people.
+  `,
+
+      'art lebedev studio': `
+    <a href="https://www.artlebedev.ru/" target="_blank" rel="noopener noreferrer">website link</a>
+    <br><br>
+    Designed templates and layouts for Fokus, improved UX, tested the product and documented bugs; also created social media content and email campaigns.
   `
     };
 
@@ -518,7 +525,7 @@ class ProjectView {
   closeProject() {
     const specialClasses = [
       'mindplug-project', 'music-zine-project', 'calendar-project', 'terracotta-project', 'vintage-project',
-      'someone-baked-project', 'abc-zine-project', 'air-payment-project', 'plantae-project', 'card-game-project'
+      'someone-baked-project', 'abc-zine-project', 'air-payment-project', 'plantae-project', 'card-game-project', 'artlebedev-project'
     ];
 
     specialClasses.forEach(className => {
@@ -736,11 +743,33 @@ class ProjectView {
     this.updateMorePhotosText(elements.morePhotos, '5 more photos');
   }
 
+  setupArtLebedevProject() {
+    this.projectContent.classList.add('artlebedev-project');
+
+    const elements = this.getProjectElements();
+    this.saveOriginalState(elements);
+    this.limitSmallImages(elements.leftColumn, 1);
+    this.updateSmallImages(elements.leftColumn, [
+      { src: 'assets/images/artlebedev.jpg', alt: 'Art Lebedev Studio — Fokus cover' }
+    ]);
+    this.updateLargeImage(elements.largeImgContainer, 'assets/images/artlebedev1.jpg', 'Fokus presentation templates');
+    if (elements.morePhotos) elements.morePhotos.style.display = 'none';
+
+    const smallImage = elements.leftColumn.querySelector('.project-small-img');
+    const smallImg = smallImage?.querySelector('img');
+    if (smallImage && smallImg) {
+      smallImg.onerror = () => {
+        smallImg.style.display = 'none';
+        smallImage.classList.add('image-missing');
+      };
+    }
+  }
+
   setupRegularProject() {
     const specialClasses = [
       'someone-baked-project', 'mindplug-project', 'music-zine-project', 'calendar-project',
       'terracotta-project', 'abc-zine-project', 'air-payment-project', 'plantae-project',
-      'vintage-project', 'card-game-project'
+      'vintage-project', 'card-game-project', 'artlebedev-project'
     ];
     this.projectContent.classList.remove(...specialClasses);
 
@@ -834,6 +863,12 @@ class ProjectView {
   updateLargeImage(container, src, alt) {
     const largeImage = container.querySelector('img');
     if (largeImage) {
+      largeImage.style.display = '';
+      container.classList.remove('image-missing');
+      largeImage.onerror = () => {
+        largeImage.style.display = 'none';
+        container.classList.add('image-missing');
+      };
       largeImage.src = src;
       largeImage.alt = alt;
     }
@@ -907,7 +942,7 @@ class ProjectView {
 
     const skipImageUpdate = [
       'mindplug', 'korean calendar', 'terracotta', 'vintage',
-      'someone baked this', 'abc zine', 'air payment app', 'plantae', 'card game'
+      'someone baked this', 'abc zine', 'air payment app', 'plantae', 'card game', 'art lebedev studio'
     ];
 
     if (!skipImageUpdate.includes(title)) {
@@ -1058,7 +1093,7 @@ class SimpleGallery {
     if (projectContent.classList.contains('card-game-project')) return 'card-game';
 
     const disabledProjects = [
-      'mindplug-project', 'terracotta-project', 'vintage-project'
+      'mindplug-project', 'terracotta-project', 'vintage-project', 'artlebedev-project'
     ];
 
     for (const project of disabledProjects) {
@@ -1364,7 +1399,7 @@ class SimpleGallery {
     const checkForSpecialProjects = () => {
       const projectContent = document.querySelector('.project-content');
       const disabledProjects = [
-        'mindplug-project', 'terracotta-project', 'vintage-project'
+        'mindplug-project', 'terracotta-project', 'vintage-project', 'artlebedev-project'
       ];
 
       const isDisabled = disabledProjects.some(project => 

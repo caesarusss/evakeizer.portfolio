@@ -1545,20 +1545,21 @@ body {
   border-radius: 0;
   padding: 0;
   background: transparent;
-  color: inherit;
+  color: #000;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
   text-decoration: none;
+  opacity: 1;
   cursor: pointer;
-  opacity: .55;
 }
 
 .language-button.active {
-  opacity: 1;
+  color: #000;
   text-decoration: underline;
+  text-decoration-color: #000;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -1578,19 +1579,23 @@ body {
   margin-bottom: 32px;
 }
 
+.card-title,
 .section-heading {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 14px;
-  line-height: 18px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  line-height: 23px;
   font-weight: 400;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
 }
 
 .section-heading-line {
   width: 100%;
   height: 1px;
-  margin-top: 8px;
+  margin-top: 4px;
   background: #000;
 }
 
@@ -1642,4 +1647,62 @@ body {
     height: auto;
     aspect-ratio: 236 / 163;
   }
+}
+
+
+/* Art Lebedev Studio project cover; local image can be dropped into assets/images/artlebedev.jpg. */
+.artlebedev-cover {
+  position: relative;
+  width: 236px;
+  aspect-ratio: 236 / 163;
+  overflow: hidden;
+  background: #d9d9d9;
+}
+
+.card-title {
+  margin-top: 4px;
+}
+
+.artlebedev-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artlebedev-cover.image-missing::after {
+  content: "art lebedev studio";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font: 400 18px/23px "Helvetica Neue", sans-serif;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+}
+
+.project-small-img.image-missing,
+.project-large-img.image-missing {
+  background: #d9d9d9;
+}
+
+.project-small-img.image-missing::after,
+.project-large-img.image-missing::after {
+  content: "art lebedev studio";
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font: 400 18px/23px "Helvetica Neue", sans-serif;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+}
+
+@media (max-width: 1100px) {
+  .artlebedev-cover { width: 100%; }
 }
