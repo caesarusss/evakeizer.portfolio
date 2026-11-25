@@ -1680,3 +1680,63 @@ a:hover, a:active {
 .project-content.pho-bo-project .project-left-column img {
   cursor: pointer;
 }
+
+/* Larger invisible hit area for the language switch; visual typography stays unchanged. */
+.language-switch {
+  font-size: 14px;
+}
+.language-button {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: inherit;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 8px 3px;
+  margin: -8px -3px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.language-button:focus-visible {
+  text-decoration: underline;
+}
+
+/* Eventforme: single full-width animated identity, following the Mindplug layout. */
+.project-content.eventforme-project .project-left-column {
+  grid-column: 1 / span 3 !important;
+  width: 977px !important;
+  height: 595px !important;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.project-content.eventforme-project .project-left-column img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.project-content.eventforme-project .project-large-img,
+.project-content.eventforme-project .more-photos {
+  display: none !important;
+}
+@media (max-width: 1379px) {
+  .project-content.eventforme-project .project-left-column {
+    width: 842px !important;
+    height: 490px !important;
+  }
+}
+@media (max-width: 1023px) {
+  .project-content.eventforme-project .project-left-column {
+    width: 692px !important;
+    height: 408px !important;
+  }
+}
+@media (max-width: 767px) {
+  .project-content.eventforme-project .project-left-column {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 977 / 595;
+    grid-column: 1 !important;
+  }
+}

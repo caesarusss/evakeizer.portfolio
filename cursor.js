@@ -413,6 +413,8 @@ class ProjectView {
       'plantae': this.setupPlantaeProject.bind(this),
       'card game': this.setupCardGameProject.bind(this),
       'art lebedev studio': this.setupArtLebedevProject.bind(this),
+      'silwer sword fest': this.setupSwordProject.bind(this),
+      'eventforme': this.setupEventformeProject.bind(this),
     };
 
     this.projectTexts = {
@@ -476,6 +478,18 @@ class ProjectView {
     <a href="https://www.artlebedev.ru/" target="_blank" rel="noopener noreferrer">website link</a>
     <br><br>
     Designed templates and layouts for Fokus, improved UX, tested the product and documented bugs; also created social media content and email campaigns.
+  `,
+
+      'silwer sword fest': `
+    <a href="http://sword.gitis.net/" target="_blank" rel="noopener noreferrer">website link</a>
+    <br><br>
+    Visual identity for a fencing festival organized by the GITIS educational institution.
+  `,
+
+      'eventforme': `
+    <a href="https://eventforme.ru/" target="_blank" rel="noopener noreferrer">website link</a>
+    <br><br>
+    Visual identity and web platform development for planning weddings and other events.
   `
     };
 
@@ -531,7 +545,7 @@ class ProjectView {
   closeProject() {
     const specialClasses = [
       'mindplug-project', 'music-zine-project', 'calendar-project', 'terracotta-project', 'vintage-project',
-      'someone-baked-project', 'abc-zine-project', 'air-payment-project', 'pho-bo-project', 'plantae-project', 'card-game-project', 'artlebedev-project'
+      'someone-baked-project', 'abc-zine-project', 'air-payment-project', 'pho-bo-project', 'plantae-project', 'card-game-project', 'artlebedev-project', 'sword-project', 'eventforme-project'
     ];
 
     specialClasses.forEach(className => {
@@ -648,6 +662,46 @@ class ProjectView {
     );
 
     this.adaptCalendarForMobile(elements);
+  }
+
+  setupSwordProject() {
+    this.projectContent.classList.add('sword-project');
+
+    const elements = this.getProjectElements();
+    this.saveOriginalState(elements);
+
+    this.updateLargeImage(elements.largeImgContainer, 'assets/images/sword.mp4', 'Silwer Sword Fest identity animation');
+    this.limitSmallImages(elements.leftColumn, 2);
+    this.updateSmallImages(elements.leftColumn, [
+      { src: 'assets/images/sword1.jpg', alt: 'Silwer Sword Fest identity detail 1' },
+      { src: 'assets/images/sword2.jpg', alt: 'Silwer Sword Fest identity detail 2' }
+    ]);
+    this.updateMorePhotosText(elements.morePhotos, '2 more photos');
+
+    elements.projectTextBlock.style.display = 'block';
+    elements.bottomContainer.style.display = 'grid';
+    this.repositionButtons(elements.projectWrapper, elements.morePhotos, elements.projectGoBack, 595);
+  }
+
+  setupEventformeProject() {
+    this.projectContent.classList.add('eventforme-project');
+
+    const elements = this.getProjectElements();
+    this.saveOriginalState(elements);
+
+    elements.leftColumn.innerHTML = '';
+    elements.leftColumn.style.gridColumn = '1 / span 3';
+    elements.leftColumn.style.width = '977px';
+    elements.leftColumn.style.height = '595px';
+    const gif = document.createElement('img');
+    gif.src = 'assets/images/efm.gif';
+    gif.alt = 'Eventforme identity animation';
+    gif.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    elements.leftColumn.appendChild(gif);
+    this.adaptForMobile(elements.leftColumn, 'eventforme');
+
+    elements.largeImgContainer.style.display = 'none';
+    if (elements.morePhotos) elements.morePhotos.style.display = 'none';
   }
 
   setupTerracottaProject() {
@@ -935,7 +989,8 @@ class ProjectView {
 
       goBack.style.cssText = `
         position: absolute;
-        left: 247px;
+        right: 0;
+        left: auto;
         top: ${topOffset ? photosTop + 12 : videoHeight + 44}px;
         margin-top: 0;
         z-index: 2;
@@ -969,7 +1024,7 @@ class ProjectView {
 
     const skipImageUpdate = [
       'mindplug', 'korean calendar', 'terracotta', 'vintage',
-      'someone baked this', 'abc zine', 'air payment app', 'pho bo', 'plantae', 'card game', 'art lebedev studio'
+      'someone baked this', 'abc zine', 'air payment app', 'pho bo', 'plantae', 'card game', 'art lebedev studio', 'silwer sword fest', 'eventforme'
     ];
 
     if (!skipImageUpdate.includes(title)) {
@@ -993,7 +1048,8 @@ class ProjectView {
         elements.projectGoBack.style.cssText = '';
         elements.projectGoBack.style.marginTop = '12px';
         elements.projectGoBack.style.order = '2';
-        elements.projectGoBack.style.alignSelf = 'flex-start';
+        elements.projectGoBack.style.alignSelf = 'flex-end';
+        elements.projectGoBack.style.marginLeft = 'auto';
       }
     }
   }
@@ -1080,6 +1136,9 @@ class SimpleGallery {
       case 'calendar':
         this.collectCalendarImages();
         break;
+      case 'sword':
+        this.collectSwordImages();
+        break;
       case 'music-zine':
         this.collectMusicZineImages();
         break;
@@ -1113,6 +1172,7 @@ class SimpleGallery {
     if (!projectContent) return 'regular';
 
     if (projectContent.classList.contains('calendar-project')) return 'calendar';
+    if (projectContent.classList.contains('sword-project')) return 'sword';
     if (projectContent.classList.contains('music-zine-project')) return 'music-zine';
     if (projectContent.classList.contains('someone-baked-project')) return 'someone-baked';
     if (projectContent.classList.contains('abc-zine-project')) return 'abc-zine';
@@ -1122,7 +1182,7 @@ class SimpleGallery {
     if (projectContent.classList.contains('card-game-project')) return 'card-game';
 
     const disabledProjects = [
-      'mindplug-project', 'terracotta-project', 'vintage-project',
+      'mindplug-project', 'terracotta-project', 'vintage-project', 'eventforme-project',
       'artlebedev-project'
     ];
 
@@ -1146,6 +1206,16 @@ class SimpleGallery {
     }
 
     console.log('Total Calendar images:', this.images.length);
+  }
+
+  collectSwordImages() {
+    this.images = [
+      'assets/images/sword.mp4',
+      'assets/images/sword1.jpg',
+      'assets/images/sword2.jpg',
+      'assets/images/sword3.jpg',
+      'assets/images/sword4.jpg'
+    ];
   }
 
   collectMusicZineImages() {
