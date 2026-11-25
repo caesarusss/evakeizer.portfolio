@@ -694,7 +694,7 @@ class ProjectView {
     elements.leftColumn.style.width = '977px';
     elements.leftColumn.style.height = '595px';
     const gif = document.createElement('img');
-    gif.src = 'assets/images/efm.gif';
+    gif.src = 'assets/images/efm.mp4';
     gif.alt = 'Eventforme identity animation';
     gif.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
     elements.leftColumn.appendChild(gif);
