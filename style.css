@@ -1740,3 +1740,25 @@ a:hover, a:active {
     grid-column: 1 !important;
   }
 }
+
+
+/* Silver Sword Fest: keep the portrait poster inside the standard card frame. */
+.silver-sword-card img {
+  aspect-ratio: 236 / 163;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Project animations use native video elements. */
+.project-large-img video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.project-content.eventforme-project .project-left-column video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

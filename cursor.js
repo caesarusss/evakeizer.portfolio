@@ -413,7 +413,7 @@ class ProjectView {
       'plantae': this.setupPlantaeProject.bind(this),
       'card game': this.setupCardGameProject.bind(this),
       'art lebedev studio': this.setupArtLebedevProject.bind(this),
-      'silwer sword fest': this.setupSwordProject.bind(this),
+      'silver sword fest': this.setupSwordProject.bind(this),
       'eventforme': this.setupEventformeProject.bind(this),
     };
 
@@ -480,7 +480,7 @@ class ProjectView {
     Designed templates and layouts for Fokus, improved UX, tested the product and documented bugs; also created social media content and email campaigns.
   `,
 
-      'silwer sword fest': `
+      'silver sword fest': `
     <a href="http://sword.gitis.net/" target="_blank" rel="noopener noreferrer">website link</a>
     <br><br>
     Visual identity for a fencing festival organized by the GITIS educational institution.
@@ -670,11 +670,13 @@ class ProjectView {
     const elements = this.getProjectElements();
     this.saveOriginalState(elements);
 
-    this.updateLargeImage(elements.largeImgContainer, 'assets/images/sword.mp4', 'Silwer Sword Fest identity animation');
+    const swordVideo = this.createVideoContainer('assets/images/sword.mp4', 'Silver Sword Fest identity animation');
+    elements.largeImgContainer.innerHTML = '';
+    elements.largeImgContainer.appendChild(swordVideo);
     this.limitSmallImages(elements.leftColumn, 2);
     this.updateSmallImages(elements.leftColumn, [
-      { src: 'assets/images/sword1.jpg', alt: 'Silwer Sword Fest identity detail 1' },
-      { src: 'assets/images/sword2.jpg', alt: 'Silwer Sword Fest identity detail 2' }
+      { src: 'assets/images/sword1.jpg', alt: 'Silver Sword Fest identity detail 1' },
+      { src: 'assets/images/sword2.jpg', alt: 'Silver Sword Fest identity detail 2' }
     ]);
     this.updateMorePhotosText(elements.morePhotos, '2 more photos');
 
@@ -693,11 +695,8 @@ class ProjectView {
     elements.leftColumn.style.gridColumn = '1 / span 3';
     elements.leftColumn.style.width = '977px';
     elements.leftColumn.style.height = '595px';
-    const gif = document.createElement('img');
-    gif.src = 'assets/images/efm.mp4';
-    gif.alt = 'Eventforme identity animation';
-    gif.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
-    elements.leftColumn.appendChild(gif);
+    const eventformeVideo = this.createVideoContainer('assets/images/efm.mp4', 'Eventforme identity animation');
+    elements.leftColumn.appendChild(eventformeVideo);
     this.adaptForMobile(elements.leftColumn, 'eventforme');
 
     elements.largeImgContainer.style.display = 'none';
@@ -1024,7 +1023,7 @@ class ProjectView {
 
     const skipImageUpdate = [
       'mindplug', 'korean calendar', 'terracotta', 'vintage',
-      'someone baked this', 'abc zine', 'air payment app', 'pho bo', 'plantae', 'card game', 'art lebedev studio', 'silwer sword fest', 'eventforme'
+      'someone baked this', 'abc zine', 'air payment app', 'pho bo', 'plantae', 'card game', 'art lebedev studio', 'silver sword fest', 'eventforme'
     ];
 
     if (!skipImageUpdate.includes(title)) {
@@ -1210,7 +1209,6 @@ class SimpleGallery {
 
   collectSwordImages() {
     this.images = [
-      'assets/images/sword.mp4',
       'assets/images/sword1.jpg',
       'assets/images/sword2.jpg',
       'assets/images/sword3.jpg',
