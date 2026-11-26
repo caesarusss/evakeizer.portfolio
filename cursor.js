@@ -682,7 +682,11 @@ class ProjectView {
 
     elements.projectTextBlock.style.display = 'block';
     elements.bottomContainer.style.display = 'grid';
-    this.repositionButtons(elements.projectWrapper, elements.morePhotos, elements.projectGoBack, 595);
+
+    // Keep the photo link in the thumbnail column. Absolute positioning it
+    // against the whole project wrapper made it overlap the description link.
+    elements.morePhotos.style.cssText = '';
+    elements.leftColumn.appendChild(elements.morePhotos);
   }
 
   setupEventformeProject() {
